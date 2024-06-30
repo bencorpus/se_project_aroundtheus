@@ -1,0 +1,10 @@
+.header {
+  margin-top: 45px;
+  max-width: 880px;
+}
+
+.header__line {
+  opacity: 0.7;
+  color: rgba(84, 84, 84, 1);
+  margin-top: 41px;
+}

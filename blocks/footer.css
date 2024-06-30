@@ -1,0 +1,12 @@
+.footer {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  width: 318px;
+  height: 18px;
+  margin-left: 200px;
+  margin-top: 67px;
+  margin-bottom: 60px;
+  color: rgba(84, 84, 84, 1);
+}
