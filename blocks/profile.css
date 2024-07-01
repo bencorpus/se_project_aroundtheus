@@ -40,7 +40,9 @@
   margin: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   align-items: baseline;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__description {
@@ -50,6 +52,9 @@
   grid-area: description;
   margin: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__image {
@@ -90,6 +95,7 @@
   .profile__description {
     width: 100%;
     text-align: center;
+    margin-bottom: 36px;
   }
 
   .profile__add-button {
