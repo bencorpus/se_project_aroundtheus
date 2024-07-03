@@ -40,7 +40,6 @@
   margin: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   align-items: baseline;
-  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -63,7 +62,6 @@
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
-  margin-left: 24px;
   margin-right: 24px;
 }
 
@@ -83,6 +81,7 @@
   .profile {
     flex-direction: column;
     max-width: 282px;
+    margin-bottom: 36px;
   }
 
   .profile__info {
@@ -96,6 +95,8 @@
     width: 100%;
     text-align: center;
     margin-bottom: 36px;
+    font-size: 14px;
+    line-height: 16.94px;
   }
 
   .profile__add-button {
@@ -106,5 +107,14 @@
   .profile__title {
     font-size: 22px;
     line-height: 26.63px;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
+
+  .profile__image {
+    margin-bottom: 30px;
   }
 }

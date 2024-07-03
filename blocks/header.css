@@ -1,12 +1,10 @@
 .header {
   padding-top: 45px;
   max-width: 880px;
-}
-
-.header__line {
-  opacity: 0.7;
-  color: rgba(84, 84, 84, 1);
-  margin-top: 41px;
+  border-bottom: solid;
+  border-bottom-color: rgba(84, 84, 84, 0.7);
+  border-bottom-width: 1px;
+  height: 74px;
 }
 
 .header__logo {
@@ -17,15 +15,12 @@
 @media screen and (max-width: 320px) {
   .header {
     padding-top: 28px;
+    height: 56px;
   }
 
   .header__logo {
     padding-left: 27px;
     width: 126px;
     height: 28px;
-  }
-
-  .header__line {
-    opacity: 0.7;
   }
 }
