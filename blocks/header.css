@@ -4,7 +4,8 @@
   border-bottom: solid;
   border-bottom-color: rgba(84, 84, 84, 0.7);
   border-bottom-width: 1px;
-  height: 74px;
+  min-height: 74px;
+  padding-bottom: 41px;
 }
 
 .header__logo {
@@ -15,7 +16,8 @@
 @media screen and (max-width: 320px) {
   .header {
     padding-top: 28px;
-    height: 56px;
+    min-height: 56px;
+    padding-bottom: 32px;
   }
 
   .header__logo {
