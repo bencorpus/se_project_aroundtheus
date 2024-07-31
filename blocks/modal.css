@@ -51,7 +51,7 @@
   max-width: 358px;
 }
 
-.modal.button-save [type="submit"] {
+.modal__button-save {
   background-color: black;
   color: #fff;
   border-radius: 2px;
@@ -76,9 +76,12 @@
 
 @media screen and (max-width: 320px) {
   .modal__container {
-    max-width: 282px;
+    width: 282px;
     height: 322px;
     top: 0;
-    right: ;
+    right: 0;
+    left 0;
+    bottom:0;
+
   }
 }
