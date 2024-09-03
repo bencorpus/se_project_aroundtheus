@@ -35,15 +35,36 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+const profileEditForm = profileEditModal.querySelector(".modal__form");
+const profileModalClose = document.querySelector("#modal-close-button");
+const cardTemplate = document.querySelector("#card-template");
+/* -------------------------------------------------------------------------- */
+/*                                  Functions                                 */
+/* -------------------------------------------------------------------------- */
+function closePopUp() {
+  profileEditModal.classList.remove("modal_opened");
+}
 
+/* -------------------------------------------------------------------------- */
+/*                               Event Handlers                               */
+/* -------------------------------------------------------------------------- */
+
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent.trim() === profileDescriptionInput.value;
+  closePopUp();
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Event Listeners                              */
+/* -------------------------------------------------------------------------- */
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  profileDescriptionInput.value = profileDescription.textContent.trim();
   profileEditModal.classList.add("modal_opened");
 });
 
-const profileModalClose = document.querySelector("#modal-close-button");
+profileModalClose.addEventListener("click", closePopUp());
 
-profileModalClose.addEventListener("click", () => {
-  profileEditModal.classList.remove("modal_opened");
-});
+profileEditForm.addEventListener("submit", handleProfileEditSubmit());
