@@ -65,7 +65,7 @@
   height: 50px;
   margin-top: 18.26px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
 }
 
@@ -74,6 +74,7 @@
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 29.74px;
+  font-family: "inter", Arial, Helvetica, sans-serif;
 }
 
 @media screen and (max-width: 320px) {
@@ -85,6 +86,10 @@
     right: 0;
     left: 0;
     bottom: 0;
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 
   .modal__input {
@@ -95,6 +100,7 @@
   .modal__button-save {
     width: 100%;
     margin-top: 15px;
+    font-size: 14px;
   }
 
   .modal__heading {
