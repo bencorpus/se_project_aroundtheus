@@ -29,6 +29,7 @@ const initialCards = [
 /* -------------------------------------------------------------------------- */
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
+const addCardModal = document.querySelector("#add-card-modal");
 const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-description");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -36,15 +37,22 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const profileModalClose = document.querySelector("#modal-close-button");
+const profileModalCloseButton = profileEditModal.querySelector("#modal-close-button");
+const addCardModalCloseButton = addCardModal.querySelector("#modal-close-button");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
+const addNewCardButton = document.querySelector(".profile__add-button");
+
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
-function closePopUp() {
-  profileEditModal.classList.remove("modal_opened");
+function closeModal() {
+  modal.classList.remove("modal_opened");
+}
+
+function openmodal(modal) {
+  modal.classList.add("modal_opened")
 }
 
 /* -------------------------------------------------------------------------- */
@@ -76,11 +84,16 @@ profileEditButton.addEventListener("click", () => {
   profileEditModal.classList.add("modal_opened");
 });
 
-profileModalClose.addEventListener("click", closePopUp);
+profileModalCloseButton.addEventListener("click", () => closeModal(profileEditModal));
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
+addNewCardButton.addEventListener("click",() => openmodal(addCardModal));
+addCardModalCloseButton.addEventListener("click", () => closeModal(addCardModal));
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 });
+
+
