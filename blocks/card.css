@@ -29,6 +29,10 @@
   cursor: pointer;
 }
 
+.card__like-button_active {
+  background-image: url("../images/like-active.svg");
+}
+
 .card__title {
   max-width: 220px;
   font-size: 24px;
