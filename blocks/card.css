@@ -51,14 +51,19 @@
   border-radius: 10px;
   list-style-type: none;
   overflow: hidden;
+  position: relative;
 }
 
 .card__delete-button {
   background: url("../images/Trash.svg");
   height: 19.3px;
   width: 18px;
-  position: absolute;
+  position:absolute;
   border: none;
   top: 18px;
   right: 15px;
+}
+
+.card__delete-button:hover{
+  cursor: pointer;
 }

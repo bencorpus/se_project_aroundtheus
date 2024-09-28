@@ -88,8 +88,11 @@ function handleAddCardFormSubmit(e) {
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
+  console.log(cardElement);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
+  console.log(cardDeleteButton); // Log to check if the delete button is found
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
@@ -126,4 +129,13 @@ likeButtons.forEach((likebutton) => {
   likebutton.addEventListener("click", () => {
     likebutton.classList.toggle(".card__like-button_active");
   });
+});
+
+cardDeleteButton.addEventListener("click", () => {
+  console.log("Delete button clicked");
+  const cardToDelete = cardDeleteButton.closest(".card");
+  if (cardToDelete) {
+    console.log("Card found and will be deleted");
+    cardToDelete.remove();
+  }
 });
