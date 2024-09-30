@@ -50,6 +50,11 @@ const cardListEl = document.querySelector(".cards__list");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
 const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
+const previewModal = document.querySelector("#preview-image-modal");
+const previewModalImageEl = previewModal.querySelector(".modal__preview-image");
+const previewModalCaptionEl = previewModal.querySelector(
+  ".modal__preview-image-title"
+);
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -88,14 +93,25 @@ function handleAddCardFormSubmit(e) {
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
-  console.log(cardElement);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardDeleteButton = cardElement.querySelector(".card__delete-button");
-  console.log(cardDeleteButton); // Log to check if the delete button is found
+  cardDeleteButton.addEventListener("click", () => {
+    const cardToDelete = cardDeleteButton.closest(".card");
+    if (cardToDelete) {
+      console.log("Card found and will be deleted");
+      cardToDelete.remove();
+    }
+  });
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
+  cardImageEl.addEventListener("click", function () {
+    openModal(previewModal);
+    previewModalImageEl.src = data.link;
+    previewModalImageEl.alt = data.alt;
+    previewModalCaptionEl.textContent = data.name;
+  });
   return cardElement;
 }
 /* -------------------------------------------------------------------------- */
@@ -129,13 +145,4 @@ likeButtons.forEach((likebutton) => {
   likebutton.addEventListener("click", () => {
     likebutton.classList.toggle(".card__like-button_active");
   });
-});
-
-cardDeleteButton.addEventListener("click", () => {
-  console.log("Delete button clicked");
-  const cardToDelete = cardDeleteButton.closest(".card");
-  if (cardToDelete) {
-    console.log("Card found and will be deleted");
-    cardToDelete.remove();
-  }
 });

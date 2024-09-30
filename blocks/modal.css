@@ -77,6 +77,25 @@
   font-family: "inter", Arial, Helvetica, sans-serif;
 }
 
+.modal__container_preview {
+  padding: 0;
+  background: none;
+  max-width: 80vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+.modal__close-btn_type_preview {
+  background-image: url(../images/Close\ Icon.svg);
+  top: 0;
+  right: -52.5px;
+  opacity: 1;
+}
+
 @media screen and (max-width: 320px) {
   .modal__container {
     box-sizing: border-box;
