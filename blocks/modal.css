@@ -80,11 +80,16 @@
 .modal__container_preview {
   padding: 0;
   background: none;
-  max-width: 80vw;
-  max-height: 80vh;
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+.modal__preview-image {
+  object-fit: contain;
+  margin-bottom: 8px;
+  max-width: 80vw;
+  max-height: 80vh;
   width: auto;
   height: auto;
 }
@@ -94,6 +99,13 @@
   top: 0;
   right: -52.5px;
   opacity: 1;
+}
+
+.modal__preview-image-title {
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
 }
 
 @media screen and (max-width: 320px) {
@@ -133,5 +145,11 @@
     height: 26px;
     bottom: calc(100% + 10px);
     left: 90%;
+  }
+
+  .modal__close-btn_type_preview {
+    position: absolute;
+    top: -5px;
+    right: -5px;
   }
 }
