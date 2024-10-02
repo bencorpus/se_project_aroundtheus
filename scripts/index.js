@@ -98,6 +98,10 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardDeleteButton = cardElement.querySelector(".card__delete-button");
+  const likeButton = cardElement.querySelector(".card__like-button"); //you need to find likeButton inside cardElement and make sure to spell likeButton the same in event listener
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
   cardDeleteButton.addEventListener("click", () => {
     const cardToDelete = cardDeleteButton.closest(".card");
     if (cardToDelete) {
@@ -108,9 +112,7 @@ function getCardElement(cardData) {
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
-  likebutton.addEventListener("click", () => {
-    likebutton.classList.toggle("card__like-button_active");
-  });
+
   cardImageEl.addEventListener("click", function () {
     openModal(previewModal);
     previewModalImageEl.src = cardData.link;
@@ -149,11 +151,4 @@ addCardModalCloseButton.addEventListener("click", () =>
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   renderCard(cardData, cardListEl);
-});
-
-const likeButtons = document.querySelectorAll(".card__like-button");
-likeButtons.forEach((likebutton) => {
-  likebutton.addEventListener("click", () => {
-    likebutton.classList.toggle("card__like-button_active");
-  });
 });
