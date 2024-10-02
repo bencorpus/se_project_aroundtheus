@@ -10,11 +10,19 @@
   align-items: center;
   justify-content: center;
   padding: 0 19px;
-  display: none;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Ensure it's not interactive when hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal_opened {
   display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal_opened .modal__container {
+  transform: translateY();
 }
 
 .modal__container {
@@ -24,6 +32,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
 }
 
 .modal__heading {

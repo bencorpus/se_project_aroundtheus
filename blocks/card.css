@@ -9,6 +9,9 @@
   height: 282px;
 }
 
+.card__image:hover {
+  cursor: pointer;
+}
 .card__description {
   display: flex;
   background-color: white;
@@ -58,12 +61,12 @@
   background: url("../images/Trash.svg");
   height: 19.3px;
   width: 18px;
-  position:absolute;
+  position: absolute;
   border: none;
   top: 18px;
   right: 15px;
 }
 
-.card__delete-button:hover{
+.card__delete-button:hover {
   cursor: pointer;
 }

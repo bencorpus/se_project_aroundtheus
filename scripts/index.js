@@ -146,6 +146,7 @@ initialCards.forEach((cardData) => {
 const likeButtons = document.querySelectorAll(".card__like-button");
 likeButtons.forEach((likebutton) => {
   likebutton.addEventListener("click", () => {
-    likebutton.classList.toggle(".card__like-button_active");
+    likebutton.classList.toggle("card__like-button_active");
   });
 });
+
