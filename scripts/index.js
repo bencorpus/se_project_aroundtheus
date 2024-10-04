@@ -128,7 +128,7 @@ function getCardElement(cardData) {
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  profileEditModal.classList.add("modal_opened");
+  openModal(profileEditModal);
 });
 
 profileModalCloseButton.addEventListener("click", () =>
@@ -147,6 +147,5 @@ addCardModalCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
   renderCard(cardData, cardListEl);
 });
