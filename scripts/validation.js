@@ -5,14 +5,14 @@ function showInputError(formEl, inputEl, { inputErrorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.add(inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
-  errorMessageEl.classList.add(errorClass);
+  errorMessageEl.classList.add(inputErrorClass);
 }
 
 function hideInputError(formEl, inputEl, { inputErrorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.remove(inputErrorClass);
-  errorMessageEl.textContent = '';
-  errorMessageEl.classList.remove(errorClass);
+  errorMessageEl.textContent = ``;
+  errorMessageEl.classList.remove(inputErrorClass);
 }
 
 function checkInputValidity(formEl, inputEl, options) {
@@ -27,11 +27,10 @@ function setEventListeners(formEl, options) {
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   const submitButton = formEl.querySelector(".modal__button-save");
   inputEls.forEach((inputEl) => {
-    inputEl,
-      addEventListener("input", (e) => {
-        checkInputValidity(formEl, inputEl, options);
-        toggleButtonState(inputEls, submitButton, options);
-      });
+    inputEl.addEventListener("input", (e) => {
+      checkInputValidity(formEl, inputEl, options);
+      toggleButtonState(inputEls, submitButton, options);
+    });
   });
 }
 
@@ -42,20 +41,20 @@ function hasInvalidInput(inputList) {
 //disableButton
 
 function disableButton(submitButton, inactiveButtonClass) {
-  submitButton.classlist.add(inactiveButtonClass);
+  submitButton.classList.add(inactiveButtonClass);
   submitButton.disabled = true;
 }
 
 //enableButton
 
 function enableButton(submitButton, inactiveButtonClass) {
-  submitButton.classlist.remove(inactiveButtonClass);
+  submitButton.classList.remove(inactiveButtonClass);
   submitButton.disabled = false;
 }
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
-    submitButton.classlist.add(inactiveButtonClass);
+    submitButton.classList.add(inactiveButtonClass);
     return (submitButton.disabled = true);
   }
   submitButton.classList.remove(inactiveButtonClass);
