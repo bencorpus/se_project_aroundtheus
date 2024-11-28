@@ -149,3 +149,28 @@ addCardModalCloseButton.addEventListener("click", () =>
 initialCards.forEach((cardData) => {
   renderCard(cardData, cardListEl);
 });
+
+document.addEventListener("keydown", function (e) {
+  if (e.keycode === 27) {
+    closeModal(modal);
+  }
+});
+
+profileEditModal.addEventListener("mousedown", closeOverlay);
+addCardModal.addEventListener("mousedown", closeOverlay);
+previewModal.addEventListener("mousedown", closeOverlay);
+
+document.addEventListener("keydown", closeModalEsc);
+
+function closeOverlay(e) {
+  if (e.target.classList.contains("modal")) {
+    closeModal(e.target);
+  }
+}
+
+function closeModalEsc(e) {
+  if (e.key === "Escape") {
+    const modalOpened = document.querySelector(".modal__opened");
+    closeModal(modal);
+  }
+}
