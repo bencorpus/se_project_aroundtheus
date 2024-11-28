@@ -56,6 +56,7 @@ const previewModalCaptionEl = previewModal.querySelector(
   ".modal__preview-image-title"
 );
 const previewModalClose = previewModal.querySelector(".modal__close-preview");
+const modals = document.querySelectorAll(".modal");
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -156,9 +157,13 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-profileEditModal.addEventListener("mousedown", closeOverlay);
-addCardModal.addEventListener("mousedown", closeOverlay);
-previewModal.addEventListener("mousedown", closeOverlay);
+//previewModal.addEventListener("mousedown", closeOverlay);
+//addCardModal.addEventListener("mousedown", closeOverlay);
+//profileEditModal.addEventListener("mousedown", closeOverlay);
+
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", closeOverlay);
+});
 
 document.addEventListener("keydown", closeModalEsc);
 
@@ -170,7 +175,7 @@ function closeOverlay(e) {
 
 function closeModalEsc(e) {
   if (e.key === "Escape") {
-    const modalOpened = document.querySelector(".modal__opened");
-    closeModal(modal);
+    const modalOpened = document.querySelector(".modal_opened");
+    closeModal(modalOpened);
   }
 }
