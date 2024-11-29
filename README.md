@@ -13,7 +13,10 @@ Project Features:
 - Flexbox
 - Responsive web design to allow for mobile users
 - CSS transform
+- JavaScript interactivity between elements
 
 Plans for improving the project:
 
-To be able to click into each card and see some information about each location and how it relates to Jacque Cousteau.
+To be able to click into each card and see some information about each location and a description of the user's experience taking the picture
+
+Making the project more accessible

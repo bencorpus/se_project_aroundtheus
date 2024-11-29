@@ -143,7 +143,7 @@
   opacity: 1;
 }
 
-.modal__button_disabled {
+.modal__button-save_disabled {
   background-color: black;
   opacity: 0.2;
   border: #000 solid 1px;

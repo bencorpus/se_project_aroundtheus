@@ -63,6 +63,7 @@ const modals = document.querySelectorAll(".modal");
 /* -------------------------------------------------------------------------- */
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener('keydown', closeModalEsc);
 }
 
 function openModal(modal) {
@@ -179,3 +180,5 @@ function closeModalEsc(e) {
     closeModal(modalOpened);
   }
 }
+
+
