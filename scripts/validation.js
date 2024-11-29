@@ -25,7 +25,7 @@ function checkInputValidity(formEl, inputEl, options) {
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  const submitButton = formEl.querySelector(submitButtonSelector);
+  const submitButton = formEl.querySelector(options.submitButtonSelector);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
@@ -87,7 +87,6 @@ const config = {
   inactiveButtonClass: "modal__button-save_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
-  buttonSelector: ".modal__button-save_disabled",
 };
 
 enableValidation(config);
