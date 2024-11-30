@@ -57,13 +57,14 @@ const previewModalCaptionEl = previewModal.querySelector(
 );
 const previewModalClose = previewModal.querySelector(".modal__close-preview");
 const modals = document.querySelectorAll(".modal");
+const modalOverlay = document.querySelectorAll(".modal__container")
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener('keydown', closeModalEsc);
+  document.removeEventListener("keydown", closeModalEsc);
 }
 
 function openModal(modal) {
@@ -152,21 +153,21 @@ initialCards.forEach((cardData) => {
   renderCard(cardData, cardListEl);
 });
 
-document.addEventListener("keydown", function (e) {
+modals.addEventListener("keydown", function (e) {
   if (e.keycode === 27) {
     closeModal(modal);
   }
 });
 
-//previewModal.addEventListener("mousedown", closeOverlay);
-//addCardModal.addEventListener("mousedown", closeOverlay);
-//profileEditModal.addEventListener("mousedown", closeOverlay);
+previewModal.addEventListener("mousedown", closeOverlay);
+addCardModal.addEventListener("mousedown", closeOverlay);
+profileEditModal.addEventListener("mousedown", closeOverlay);
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", closeOverlay);
 });
 
-document.addEventListener("keydown", closeModalEsc);
+modals.addEventListener("keydown", closeModalEsc);
 
 function closeOverlay(e) {
   if (e.target.classList.contains("modal")) {
@@ -180,5 +181,3 @@ function closeModalEsc(e) {
     closeModal(modalOpened);
   }
 }
-
-
