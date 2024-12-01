@@ -61,6 +61,26 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   return (submitButton.disabled = false);
 }
 
+function isValidURL(url) {
+  const regex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+  return regex.test(url);
+}
+
+const formInput = document.querySelector("#image-link-input");
+const errorMessageLink = document.querySelector("#image-link-input-error");
+
+console.log(errorMessageLink);
+
+formInput.addEventListener("input", () => {
+  if (isValidURL(formInput.value)) {
+    console.log("Valid URL");
+    errorMessageLink.textContent = "";
+  } else {
+    console.log("Invalid URL");
+    errorMessageLink.textContent = "Please enter a web address";
+  }
+});
+
 function enableValidation(options) {
   const formEls = [...document.querySelectorAll(options.formSelector)];
   formEls.forEach((formEl) => {

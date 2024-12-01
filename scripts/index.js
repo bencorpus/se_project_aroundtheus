@@ -69,6 +69,7 @@ function closeModal(modal) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalEsc);
 }
 
 function renderCard(cardData) {
@@ -153,12 +154,6 @@ initialCards.forEach((cardData) => {
   renderCard(cardData, cardListEl);
 });
 
-modals.addEventListener("keydown", function (e) {
-  if (e.keycode === 27) {
-    closeModal(modal);
-  }
-});
-
 previewModal.addEventListener("mousedown", closeOverlay);
 addCardModal.addEventListener("mousedown", closeOverlay);
 profileEditModal.addEventListener("mousedown", closeOverlay);
@@ -166,8 +161,6 @@ profileEditModal.addEventListener("mousedown", closeOverlay);
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", closeOverlay);
 });
-
-modals.addEventListener("keydown", closeModalEsc);
 
 function closeOverlay(e) {
   if (e.target.classList.contains("modal")) {
