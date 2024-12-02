@@ -39,10 +39,10 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const addCardForm = addCardModal.querySelector(".modal__form");
 const profileModalCloseButton = profileEditModal.querySelector(
-  "#modal-close-button"
+  "#edit-modal-close-button"
 );
 const addCardModalCloseButton = addCardModal.querySelector(
-  "#modal-close-button"
+  "#add-card-modal-close-button"
 );
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -57,7 +57,6 @@ const previewModalCaptionEl = previewModal.querySelector(
 );
 const previewModalClose = previewModal.querySelector(".modal__close-preview");
 const modals = document.querySelectorAll(".modal");
-const modalOverlay = document.querySelectorAll(".modal__container")
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -138,12 +137,6 @@ profileEditButton.addEventListener("click", () => {
 profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
-
-previewModalClose.addEventListener("click", () => closeModal(previewModal));
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
