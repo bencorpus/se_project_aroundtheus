@@ -134,6 +134,9 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+addCardForm.addEventListener("submit", handleAddCardFormSubmit);
+
 profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
@@ -146,10 +149,6 @@ addCardModalCloseButton.addEventListener("click", () =>
 initialCards.forEach((cardData) => {
   renderCard(cardData, cardListEl);
 });
-
-previewModal.addEventListener("mousedown", closeOverlay);
-addCardModal.addEventListener("mousedown", closeOverlay);
-profileEditModal.addEventListener("mousedown", closeOverlay);
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", closeOverlay);
