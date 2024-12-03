@@ -137,6 +137,8 @@ profileEditButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
+previewModalClose.addEventListener("click", () => closeModal(previewModal));
+
 profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
