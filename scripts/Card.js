@@ -1,37 +1,54 @@
-export default class Card {
-  constructor({ name, link }, cardSelector) {
-    this._name = name;
-    this._link = link;
+class Card {
+  constructor(cardData, cardSelector, handlePreviewClick) {
+    this._name = cardData.name;
+    this._link = cardData.link;
+    this._likeButton = this;
+    this._deleteButton = this;
     this._cardSelector = cardSelector;
-  };
-};
+    this._handlePreviewClick = handlePreviewClick;
+  }
 
-_setEventListeners() {
-  this._cardElement.querySelector('.card__like-button').addEventListener("click", () => {
-    this._handleLikeIcon();
-  });
+  _getTemplate() {
+    const cardEl = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
 
-  this._cardElement.querySelector('.card__delete-button').addEventListener("click", () => {
-    this._handleDeleteCard();
-  });
-};
+    return cardEl;
+  }
 
-_handleLikeIcon() {
-  this._cardElement.querySelector('.card__like-button').classList.toggle('card__like-button-active')
-};
+  _setEventListeners() {
+    this._element
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        this._handlePreviewClick({
+          name: this._name,
+          link: this._link,
+        });
+      });
 
-_handleDeleteCard() {
-  this._cardElement.remove();
-  this._cardElement = null;
-};
+    this._likeButton = this._element.querySelector(".card__like-button");
+    this._deleteButton = this._element.querySelector(".card__delete-button");
+    this._likeButton.addEventListener("click", () => this.togglelikeButton());
+    this._deleteButton.addEventListener("click", () => this.remove());
+  }
 
-getView() {
-  this._cardElement = document
-  .querySelector(this._cardSelector)
-  .content.querySelector(".card")
-  .cardTemplate.cloneNode(true);
-  //get the card view
-  // set event listeners
-  this._setEventListeners();
-  // return the card
+  togglelikeButton() {
+    this._likeButton.classList.toggle("card__like-button_active");
+  }
+
+  remove() {
+    this._element.remove();
+  }
+
+  cardView() {
+    this._element = this._getTemplate();
+    this._element.querySelector(".card__image").src = this._link;
+    this._element.querySelector(".card__image").alt = this._name;
+    this._element.querySelector(".card__title").textContent = this._name;
+    this._setEventListeners();
+    return this._element;
+  }
 }
+
+export default Card;
