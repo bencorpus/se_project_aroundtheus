@@ -1,4 +1,5 @@
-import Card from "./Card.js"
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const initialCards = [
   {
@@ -30,9 +31,8 @@ const initialCards = [
 const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-
-}
-  const card = new Card(cardData, "#card-template")
+};
+const card = new Card(cardData, "#card-template");
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
@@ -177,3 +177,17 @@ function closeModalEsc(e) {
     closeModal(modalOpened);
   }
 }
+
+const settings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button-save_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const addCardFormValidator = new FormValidator(settings, addCardForm);
+addCardFormValidator.enableValidation();
+
+const editProfileFormValidator = new FormValidator(settings, profileEditForm);
+editProfileFormValidator.enableValidation();
