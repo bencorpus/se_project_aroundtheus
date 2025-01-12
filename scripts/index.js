@@ -180,7 +180,7 @@ function closeModalEsc(e) {
 
 const settings = {
   inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
+  submitButtonSelector: ".modal__button-save",
   inactiveButtonClass: "modal__button-save_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
