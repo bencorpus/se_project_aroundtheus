@@ -103,6 +103,7 @@ function handleAddCardFormSubmit(e) {
   renderCard({ name, link, cardListEl });
   closeModal(addCardModal);
   addCardForm.reset();
+  addCardFormValidator.resetValidation();
 }
 
 function getCardElement(cardData) {
