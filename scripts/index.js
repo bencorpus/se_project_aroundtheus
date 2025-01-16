@@ -81,7 +81,8 @@ function openModal(modal) {
 }
 
 function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
+  const card = new Card(cardData, "#card-template");
+  const cardElement = card.cardView(cardData);
   cardListEl.prepend(cardElement);
 }
 
