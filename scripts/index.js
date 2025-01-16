@@ -105,36 +105,6 @@ function handleAddCardFormSubmit(e) {
   addCardForm.reset();
   addCardFormValidator.resetValidation();
 }
-
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
-  const likeButton = cardElement.querySelector(".card__like-button"); //you need to find likeButton inside cardElement and make sure to spell likeButton the same in event listener
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-  cardDeleteButton.addEventListener("click", () => {
-    const cardToDelete = cardDeleteButton.closest(".card");
-    if (cardToDelete) {
-      console.log("Card found and will be deleted");
-      cardToDelete.remove();
-    }
-  });
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
-
-  cardImageEl.addEventListener("click", function () {
-    openModal(previewModal);
-    previewModalImageEl.src = cardData.link;
-    previewModalImageEl.alt = cardData.alt;
-    previewModalCaptionEl.textContent = cardData.name;
-  });
-
-  return cardElement;
-}
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
@@ -192,3 +162,12 @@ addCardFormValidator.enableValidation();
 
 const editProfileFormValidator = new FormValidator(settings, profileEditForm);
 editProfileFormValidator.enableValidation();
+
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: renderCard,
+  },
+  ".cards__list"
+);
+cardSection.renderItems();
