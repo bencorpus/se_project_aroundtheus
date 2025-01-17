@@ -163,12 +163,3 @@ addCardFormValidator.enableValidation();
 
 const editProfileFormValidator = new FormValidator(settings, profileEditForm);
 editProfileFormValidator.enableValidation();
-
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: renderCard,
-  },
-  ".cards__list"
-);
-cardSection.renderItems();
