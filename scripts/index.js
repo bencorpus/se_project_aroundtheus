@@ -28,11 +28,11 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
-const card = new Card(cardData, "#card-template");
+//const cardData = {
+//name: "Yosemite Valley",
+//link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+//};
+//const card = new Card(cardData, "#card-template");
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
 /* -------------------------------------------------------------------------- */
@@ -164,12 +164,9 @@ addCardFormValidator.enableValidation();
 const editProfileFormValidator = new FormValidator(settings, profileEditForm);
 editProfileFormValidator.enableValidation();
 
-function handlePreviewClick() {
-  const cardImageEl = document.querySelector(".card__image");
-  cardImageEl.addEventListener("click", function () {
-    openModal(previewModal);
-    previewModalImageEl.src = cardData.link;
-    previewModalImageEl.alt = cardData.alt;
-    previewModalCaptionEl.textContent = cardData.name;
-  });
+function handlePreviewClick(cardData) {
+  openModal(previewModal);
+  previewModalImageEl.src = cardData.link;
+  previewModalImageEl.alt = cardData.alt;
+  previewModalCaptionEl.textContent = cardData.name;
 }
