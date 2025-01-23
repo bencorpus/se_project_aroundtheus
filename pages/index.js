@@ -86,6 +86,11 @@ function renderCard(cardData) {
   cardListEl.prepend(cardElement);
 }
 
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  return card.getView();
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               Event Handlers                               */
 /* -------------------------------------------------------------------------- */
@@ -104,7 +109,7 @@ function handleAddCardFormSubmit(e) {
   renderCard({ name, link, cardListEl });
   closeModal(addCardModal);
   addCardForm.reset();
-  addCardFormValidator.resetValidation();
+  addCardFormValidator.resetValidation(disableButton);
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
