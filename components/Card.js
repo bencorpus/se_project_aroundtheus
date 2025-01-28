@@ -41,7 +41,7 @@ class Card {
     this._element.remove();
   }
 
-  cardView() {
+  getView() {
     this._element = this._getTemplate();
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__image").alt = this._name;

@@ -81,13 +81,13 @@ function openModal(modal) {
 }
 
 function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template", handlePreviewClick);
-  const cardElement = card.cardView(cardData);
+  const cardElement = createCard(cardData)
   cardListEl.prepend(cardElement);
 }
 
+
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(cardData, "#card-template", handlePreviewClick);
   return card.getView();
 }
 
@@ -109,7 +109,7 @@ function handleAddCardFormSubmit(e) {
   renderCard({ name, link, cardListEl });
   closeModal(addCardModal);
   addCardForm.reset();
-  addCardFormValidator.resetValidation(disableButton);
+  addCardFormValidator.disableButton();
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
