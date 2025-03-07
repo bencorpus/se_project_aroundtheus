@@ -1,5 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import "../pages/index.css";
 
 const initialCards = [
   {
@@ -81,10 +82,9 @@ function openModal(modal) {
 }
 
 function renderCard(cardData) {
-  const cardElement = createCard(cardData)
+  const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
-
 
 function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handlePreviewClick);
