@@ -5,6 +5,7 @@ export default class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._form = formEl;
+    this._errorClass = settings.errorClass;
   }
 
   _showInputError(inputEl) {
@@ -30,13 +31,11 @@ export default class FormValidator {
   }
 
   _toggleButtonState() {
-    let foundInvalid = false;
-    this._inputList.forEach((inputEl) => {
-      if (!inputEl.validity.valid) {
-        foundInvalid = true;
-      }
-    });
-    if (foundInvalid) {
+    const hasInvalidInput = this._inputList.some(
+      (inputEl) => !inputEl.validity.valid
+    );
+
+    if (hasInvalidInput) {
       this.disableButton();
     } else {
       this._submitButton.classList.remove(this._inactiveButtonClass);

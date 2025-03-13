@@ -21,10 +21,7 @@ class Card {
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._handlePreviewClick({
-          name: this._name,
-          link: this._link,
-        });
+        this._handlePreviewClick(this._name, this._link);
       });
 
     this._likeButton = this._element.querySelector(".card__like-button");
