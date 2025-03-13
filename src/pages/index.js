@@ -34,7 +34,7 @@ import {
 } from "../utils/constants.js";
 
 const userInfo = new UserInfo(".profile__title", ".profile__description");
-const imagePopup = new PopupWithImages("#preview-image-modal");
+const imagePopup = new PopupWithImages({ modalSelector: "#preview-image-modal"});
 
 profileEditButton.addEventListener("click", () => {
     const userData = userInfo.getUserInfo();
