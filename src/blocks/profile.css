@@ -78,6 +78,23 @@
   transition-timing-function: ease;
 }
 
+.profile__image-edit {
+  width: 120px;
+  height: 120px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  background: transparent url(../images/EditIcon.svg) center no-repeat;
+  background-size: 26px 26px;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 40px;
+  left: 36px;
+  opacity: 0;
+  top: 0px;
+  left: 0px;
+  transition: opacity 0.3s;
+}
+
 @media screen and (max-width: 568px) {
   .profile {
     flex-direction: column;

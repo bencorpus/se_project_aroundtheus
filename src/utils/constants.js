@@ -22,6 +22,8 @@ export {
   imageModalImg,
   imageModalText,
   imageModalCloseButton,
+  avatarEditButton,
+  avatarEditForm,
 };
 
 const initialCards = [
@@ -61,6 +63,8 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
+const avatarEditButton = document.querySelector(".profile__image-edit");
+const avatarEditForm = document.querySelector("#avatar-edit-modal");
 
 const addCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#add-card-modal");

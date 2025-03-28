@@ -161,5 +161,42 @@
           <button class="card__like-button" type="button"></button>
         </div></li
     ></template>
+    <!--Avatar Picture Modal-->
+      <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container">
+          <button class="modal__close" id="avatar-modal-close-button" type="button"></button>
+          <h2 class="modal__heading">Change profile picture</h2>
+          <form class="modal__form" id="avatar-form">
+              <label class="modal__label">
+                  <input
+                      class="modal__input"
+                      type="url"
+                      name="avatar"
+                      id="avatar-url-input"
+                      placeholder="Image URL"
+                      required
+                  />
+                  <span class="modal__error" id="avatar-url-input-error"></span>
+              </label>
+              <button class="modal__button" type="submit">Save</button>
+          </form>
+      </div>
+  </div>
+
+  <!--Delete Card Modal-->
+  <div class="modal" id="delete-card-modal">
+    <div class="modal__container">
+        <button
+            class="modal__close"
+            id="delete-card-close-button"
+            type="button"
+        ></button>
+        <h2 class="modal__heading">Are you sure?</h2>
+        <form class="modal__form">
+            <button class="modal__button" type="submit">Yes</button>
+        </form>
+    </div>
+
+
   </body>
 </html>
