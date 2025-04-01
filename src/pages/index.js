@@ -40,13 +40,8 @@ const userInfo = new UserInfo(
   ".profile__description",
   ".profile__image"
 );
-const imagePopup = new PopupWithImage({ modalSelector: "#preview-image-modal" });
 
-profileEditButton.addEventListener("click", () => {
-  const userData = userInfo.getUserInfo();
-  profileTitleInput.value = userData.name;
-  profileDescriptionInput.value = userData.job;
-});
+const imagePopup = new PopupWithImage({ modalSelector: "#preview-image-modal" });
 
 function handleImageClick(name, link) {
   const cardData = { name, link };
@@ -54,21 +49,18 @@ function handleImageClick(name, link) {
 }
 
 function handleDeleteCard(card) {
-  deleteCardPopup.open();
   deleteCardPopup.setSubmitFunc(() => {
-    api
-      .deleteCard(card.getId())
-      .then(() => {
-        card.deleteCard();
-        deleteCardPopup.close();
-      })
-      .catch((error) => {
-        console.error(
-          "An error occurred while trying to delete the card: ${err}"
-        );
-      });
+   api.deleteCard(card.getId())
+     .then(() => {
+       card.remove();
+       deleteCardPopup.close();
+     })
+     .catch((err) => {
+       console.log(`An error occurred while trying to delete the card: ${err}`);
+     });
   });
-}
+  deleteCardPopup.open();
+  }
 
 imagePopup.setEventListeners();
 
@@ -167,7 +159,7 @@ const editProfileModal = new PopupWithForm(
   }
 );
 
-const deleteCardPopup = new PopupWithConfirm("#delete-card-modal");
+const deleteCardPopup = new PopupWithConfirm({ modalSelector: "#delete-card-modal" });
 
 deleteCardPopup.setEventListeners();
 
@@ -179,6 +171,15 @@ profileEditButton.addEventListener("click", () => {
 
 const addCardFormValidator = new FormValidator(settings, addCardForm);
 addCardFormValidator.enableValidation();
+
+profileEditButton.addEventListener("click", () => {
+  console.log("Edit button clicked")
+  const userData = userInfo.getUserInfo();
+  console.log("userData:", userData);
+  profileTitleInput.value = userData.name; profileDescriptionInput.value = userData.job;
+  console.log("Input values:", profileTitleInput.value, profileDescriptionInput.value);
+  editProfileModal.open();
+});
 
 const editProfileFormValidator = new FormValidator(settings, profileEditForm);
 editProfileFormValidator.enableValidation();
@@ -236,3 +237,4 @@ avatarEditModal.setEventListeners();
 avatarEditButton.addEventListener("click", () => {
   avatarEditModal.open();
 });
+
