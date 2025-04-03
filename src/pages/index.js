@@ -76,23 +76,8 @@ function createCard(cardData) {
     handleImageClick,
     handleDeleteCard,
     userInfo.getUserId(),
-    handleUserLikes,
   );
   return card.getView();
-}
-
-function handleLikeClick(card) {
-  const isLiked = card.isLiked();
-  api
-    .changeCardLikeStatus(card._cardId, isLiked)
-    .then((updatedCard) => {
-      card.setLikes(updatedCard.likes);
-    })
-    .catch((err) => {
-      console.error(
-        `An error occurred while trying to update the like status: ${err}`
-      );
-    });
 }
 
 const section = new Section(
@@ -209,9 +194,9 @@ api
   .then((result) => {
     userInfo.setUserInfo({
       name: result.name,
-      description: result.about,
+      description: result.about
     });
-    userInfo.setUserId(result._id);
+    userInfo.setAvatar(result.avatar);
   })
   .catch((err) => {
     console.error(err);
@@ -237,7 +222,3 @@ avatarEditModal.setEventListeners();
 avatarEditButton.addEventListener("click", () => {
   avatarEditModal.open();
 });
-
-function handleUserLikes(cardId, like) {
-  return api.changeCardLikeStatus(cardId, like);
-  }
