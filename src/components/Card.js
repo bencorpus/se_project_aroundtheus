@@ -3,11 +3,13 @@ class Card {
     this._name = cardData.name;
     this._link = cardData.link;
     this._cardId = cardData._id;
-    this._likeButton = this;
     this._deleteButton = this;
     this._cardSelector = cardSelector;
     this._handlePreviewClick = handlePreviewClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._likes = cardData.likes || [];
+    this._userId = userId;
+    this._handleUserLikes = handleUserLikes;
   }
 
   _getTemplate() {
@@ -28,16 +30,25 @@ class Card {
 
     this._likeButton = this._element.querySelector(".card__like-button");
     this._deleteButton = this._element.querySelector(".card__delete-button");
-    this._likeButton.addEventListener("click", () => this.togglelikeButton());
+    this._likeButton.addEventListener("click", () => this.toggleLikeButton());
     this._deleteButton.addEventListener("click", () => {this._handleDeleteClick(this)});
   }
 
-  togglelikeButton() {
-    this._likeButton.classList.toggle("card__like-button_active");
-    }
+  toggleLikeButton() {
+    const isLiked = this._likeButton.classList.contains("card__like-button_active");
+ this._handleUserLikes(this._cardId, !isLiked)
+     .then((updatedCard) => {
+         this._likes = updatedCard.likes;
+         this._likeButton.classList.toggle("card__like-button_active");
+    })
+    .catch((err) => console.log("Error updating like status:", err))};
 
-  deleteCard() {
+  deleteCard(){
     this._element.remove();
+  }
+
+  getId(){
+    return this._cardId;
   }
 
   getView() {
@@ -46,9 +57,13 @@ class Card {
     this._element.querySelector(".card__image").alt = this._name;
     this._element.querySelector(".card__title").textContent = this._name;
     this._setEventListeners();
+    const hasUserLiked = this._likes.some((user) => user._id === this._userId);
+    if (this._likes.some((like) => like._id === this._userId)) {
+      this._likeButton.classList.add("card__like-button_active");
+    }
+
     return this._element;
   }
-
 
 }
 

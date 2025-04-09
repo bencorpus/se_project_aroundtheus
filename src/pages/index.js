@@ -76,6 +76,7 @@ function createCard(cardData) {
     handleImageClick,
     handleDeleteCard,
     userInfo.getUserId(),
+    handleCardLike
   );
   return card.getView();
 }
@@ -201,6 +202,16 @@ api
   .catch((err) => {
     console.error(err);
   });
+
+  function handleCardLike(cardId, isLiked) {
+    return api.changeCardLikeStatus(cardId, isLiked)
+     .then((updatedCard) => {
+       return updatedCard;
+     })
+     .catch((err) => {
+       console.log(`Error: ${err}`);
+     });
+    }
 
 const avatarEditModal = new PopupWithForm("#avatar-edit-modal", (formData) => {
   avatarEditModal.setLoading(true);

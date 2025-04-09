@@ -149,6 +149,21 @@
   border-bottom-color: #ff0000;
 }
 
+.modal__container_delete {
+  width: 430px;
+  height: 181px;
+  padding: 36px;
+  box-sizing: border-box;
+}
+
+.modal__container_delete .modal__heading {
+  margin-bottom: 38px;
+}
+
+.modal__container_delete .modal__button-save {
+  margin-top: 0;
+}
+
 @media screen and (max-width: 320px) {
   .modal__container {
     box-sizing: border-box;
